@@ -1,0 +1,48 @@
+#main__output_section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    flex: 1 1 auto;
+
+    overflow-y: scroll;
+}
+
+.date {
+    font-size: 35px;
+    color: var(--font-color);
+    flex: 1 1 auto;
+
+    margin-bottom: 30px;
+}
+
+.elements {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-left: 20px;
+    margin-top: 30px;
+
+    flex: 1 1 auto;
+
+}
+
+.noElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    flex: 1 1 auto;
+    opacity: .2;
+
+    font-size: 35px;
+    z-index: 0;
+}
+
+.noElements svg {
+    width: min(70%, 300px)
+}

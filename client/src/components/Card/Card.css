@@ -1,0 +1,138 @@
+.card {
+    background: var(--card-color);
+
+    width: calc(100% - 20px);
+    height: 150px;
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px;
+}
+
+.card__img {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--card-img-bg-color);
+}
+
+.card__img img {
+    width: 65px;
+}
+
+.card__left_side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card__name_category {
+    display: flex;
+    flex-direction: column;
+}
+
+.card__title {
+    background: none;
+    border: none;
+
+    font-size: 35px;
+    color: var(--font-color);
+
+    width: 280px;
+    height: 45px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card__title:focus {
+    border: none;
+    outline: none;
+}
+
+.card__category {
+    width: 50%;
+
+    font-size: 15px;
+    color: var(--font-color);
+
+    opacity: .4;
+
+    background: none;
+
+    border: none;
+    outline: none;
+    border-radius: 1px;
+}
+
+.card__category:hover,
+.card__category:focus {
+    border: none;
+    outline: none;
+}
+
+.card__value_container {
+    display: flex;
+    align-items: center;
+}
+
+.card__type {
+    color: var(--main-orange);
+    font-size: 50px;
+}
+
+.card__value {
+    background: none;
+    border: none;
+
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--font-color);
+
+    margin-top: 10px;
+}
+
+.card__value:focus {
+    border: none;
+    outline: none;
+}
+
+@media (width < 900px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    .card {
+        flex-direction: column;
+
+        height: auto;
+    }
+
+    .card__left_side {
+        flex-direction: column;
+    }
+
+    .card__name_category {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .card__title {
+        text-align: center;
+    }
+
+    .card__category {
+        text-align: center;
+    }
+}

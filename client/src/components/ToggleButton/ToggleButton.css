@@ -1,0 +1,40 @@
+.toggleBtn {
+    width: 100px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50px;
+
+    background-color: var(--disabled-checkbox-bg-color);
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.toggleBtn .circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    transform: scale(0.85);
+
+    background-color: var(--disabled-checkbox-color);
+
+    border-radius: 50%;
+
+    transition: all .2s;
+}
+
+.toggleBtn-active {
+    background-color: var(--active-checkbox-bg-color);
+}
+
+.toggleBtn-active .circle{
+    background-color: var(--main-orange);
+
+    left: 50%;
+}

@@ -1,0 +1,57 @@
+.profile-card-container {
+    background-color: var(--card-color);
+    padding: 30px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-card__upper-side {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    position: relative;
+}
+
+.p-card__upper-side::after {
+    content: "";
+    display: block;
+
+    width: 80%;
+    height: 5px;
+
+    border-radius: 15px;
+
+    background-color: var(--main-orange);
+}
+
+.p-card__icon {
+    box-sizing: content-box;
+
+    width: clamp(50px, 30%, 60px);
+    height: auto;
+
+    background-color: var(--profile-orange-opacity);
+    border-radius: 15px;
+    
+    padding: clamp(10px, 5%,20px);
+}
+
+.p-card__text {
+    color: var(--font-color);
+    font-size: clamp(13px, 1vw, 30px);
+
+    opacity: .3;
+}
+
+.p-card__value {
+    color: var(--font-color);
+    font-size: clamp(30px, 4vw, 50px);;
+}

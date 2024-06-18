@@ -1,0 +1,168 @@
+.no-reg-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    background-color: var(--card-color);
+
+    padding: 30px;
+    border-radius: 15px;
+
+    width: min(800px, 90%);
+
+    display: flex;
+    gap: 100px;
+
+    overflow-x: scroll;
+}
+
+.profile-form {
+    width: 100%;
+
+    display: block;
+}
+
+.profile-form__text {
+    color: var(--font-color);
+    font-size: clamp(40px, 4vw, 80px);
+
+    margin-bottom: 30px;
+}
+
+.profile-form__inputs {
+    position: relative;
+
+    width: 100%;
+
+    padding: 20px 0 20px 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.profile-form__inputs::after {
+    content: "";
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background-color: var(--main-orange);
+
+    border-radius: 15px;
+}
+
+.profile-form__username,
+.profile-form__password,
+.profile-form__second-password {
+    display: block;
+
+    width: 100%;
+    height: clamp(70px, 7vw, 100px);
+
+    padding: 30px;
+
+    border: none;
+    outline: none;
+    border-radius: 15px;
+
+    color: var(--font-color);
+    font-size: 20px;
+
+    background-color: var(--card-img-bg-color);
+}
+
+.profile-form__buttons {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-form__buttons button {
+    display: block;
+}
+
+.profile-form__btn {
+    position: relative;
+
+    background: none;
+    border: none;
+    outline: none;
+
+    color: var(--font-color);
+    font-size: 30px;
+
+    width: auto;
+    height: 70px;
+    padding: 10px;
+
+    background-color: var(--main-orange);
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition: all 1s ease;
+}
+
+.profile-form__btn::before {
+    content: "";
+    display: block;
+
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 5px;
+
+    border-radius: 15px;
+    background-color: var(--main-orange);
+
+    padding: 0;
+
+    transition: all 0.3s ease;
+}
+
+.profile-form__btn:hover::before {
+    padding: 0 50%;
+}
+
+.profile-form__toggle {
+    background: none;
+    border: none;
+
+    color: var(--font-color);
+    font-size: 15px;
+    opacity: .5;
+
+    cursor: pointer;
+}
+
+.profile-form__toggle:hover {
+    text-decoration: underline;
+}
+
+.profile-form__error {
+    display: block;
+
+    color: red;
+    font-size: 20px;
+
+    margin: 20px 0;
+}
