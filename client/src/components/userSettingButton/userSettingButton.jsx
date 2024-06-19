@@ -1,10 +1,12 @@
-const userSettingButton = ({ text, icon, fontColor }) => {
+import "./userSettingButton.css"
+
+const UserSettingButton = ({ text, icon, fontColor }) => {
     return (
-        <button>
+        <button className="user-settings__button">
             <img src={icon}/>
             <p style={{color: fontColor}}>{text}</p>
         </button>
     );
 }
 
-export default userSettingButton;
+export default UserSettingButton;

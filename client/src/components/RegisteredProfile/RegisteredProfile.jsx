@@ -1,7 +1,7 @@
 import ProfileCard from "../ProfileCard/ProfileCard"
 import { useRef } from "react"
 
-import userSettingButton from "../userSettingButton/userSettingButton"
+import UserSettingButton from "../userSettingButton/userSettingButton"
 
 import getCookieByName from "../../utils/getCookieByName"
 import readFileAsBase64 from "../../utils/readFileAsBase64"
@@ -15,6 +15,9 @@ import lossIcon from "../../imgs/icons/income.png"
 import incomeIcon from "../../imgs/icons/loss.png"
 import totalIcon from "../../imgs/icons/total.png"
 import settingIcon from "./img/Settings.png"
+import changePasswordIcon from "./img/Key.png"
+import logoutIcon from "./img/Logout.png"
+import deleteAccountIcon from "./img/delete.png"
 
 const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
 
@@ -84,16 +87,27 @@ const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
                 </div>
 
                 <div className="user__user-settings-container">
-                    <button className="user__settings">
+                    <button className="user__settings-btn">
                         <img src={settingIcon} alt="" />
                     </button>
 
                     <div className="user__user-settings">
-                        {/* <userSettingButton text="" icon={} fontColor=""/>
+                        <UserSettingButton
+                            text="Change password"
+                            icon={changePasswordIcon}
+                        />
 
-                        <userSettingButton text="" icon={} fontColor=""/>
+                        <UserSettingButton
+                            text="Logout"
+                            icon={logoutIcon}
+                            fontColor="red"
+                        />
 
-                        <userSettingButton text="" icon={} fontColor=""/> */}
+                        <UserSettingButton
+                            text="Delete account"
+                            icon={deleteAccountIcon}
+                            fontColor="red"
+                        />
                     </div>
                 </div>
 

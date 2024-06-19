@@ -15,6 +15,8 @@
     justify-content: space-between;
 
     gap: 10px;
+
+    position: relative;
 }
 
 .user__user-container {
@@ -26,7 +28,7 @@
     position: relative;
 }
 
-.user__avatar-container:hover > .user__changeAvatar {
+.user__avatar-container:hover>.user__changeAvatar {
     display: block;
 }
 
@@ -74,7 +76,15 @@
     display: none;
 }
 
-.user__settings {
+.user__user-settings-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    z-index: 100;
+}
+
+.user__settings-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -90,14 +100,53 @@
     transition: all .5s;
 }
 
-.user__settings:hover {
+.user__settings-btn:hover {
     background-color: var(--profile-orange-opacity);
 
     transform: rotate(-90deg);
+
+    box-sizing: content-box;
+}
+
+.user__user-settings {
+    background-color: var(--card-img-bg-color);
+
+    position: absolute;
+    top: 75px;
+    left: -80%;
+
+    padding: 20px;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    display: none;
+}
+
+.user__user-settings-container:hover {
+    padding-bottom: 5px;
+}
+
+.user__user-settings-container:hover .user__user-settings {
+    display: flex;
+}
+
+@keyframes visibleUserSettings {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    1% {
+        display: block;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .profile__user .user__username {
-    font-size: clamp(20px, 5vw, 50px);
+    font-size: clamp(8px, 4vw, 50px);
     color: var(--font-color);
 
     display: flex;
