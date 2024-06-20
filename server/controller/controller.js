@@ -131,10 +131,39 @@ const saveNewElements = (req, res) => {
 
 }
 
+const deleteAccount = (req, res) => {
+    const userId = req.userId
+
+    User.findByIdAndDelete(userId)
+        .then(res.send("user deleted"))
+}
+
+const changePassord = async (req, res) => {
+    const userId = req.userId
+    const { oldPassword, newPassword } = req.body
+
+    const userPassord = (await User.findById(userId)).password
+    const isValidPassword = await bcrypt.compare(oldPassword, userPassord)
+    if (isValidPassword) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10)
+        await User.findByIdAndUpdate(userId, { password: hashedPassword })
+        return res.send(JSON.stringify({
+            response: "User password updated",
+            isSuccessfully: true
+        }))
+    }
+    res.send(JSON.stringify({
+        response: "invalid old password",
+        isSuccessfully: false
+    }))
+}
+
 module.exports = {
     newUser,
     updateUserAvatar,
     getUserStat,
     loginUser,
-    saveNewElements
+    saveNewElements,
+    deleteAccount,
+    changePassord
 }

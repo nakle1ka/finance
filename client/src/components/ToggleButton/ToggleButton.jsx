@@ -8,8 +8,6 @@ const ToggleButton = ({ onClickFunction, disableFunction, isChecked }) => {
         } else {
             disableFunction()
         }
-
-        console.log(isChecked)
     }
 
     let currentActiveClass

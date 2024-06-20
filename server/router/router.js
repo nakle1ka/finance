@@ -8,7 +8,9 @@ const {
     updateUserAvatar,
     getUserStat,
     loginUser,
-    saveNewElements
+    saveNewElements,
+    deleteAccount,
+    changePassord
 } = require("../controller/controller.js")
 
 router.post("/registerNewUser", newUser)
@@ -19,5 +21,7 @@ router.post("/saveElemnts", auth, saveNewElements)
 
 router.get("/getUserStat", auth, getUserStat)
 
+router.delete("/deleteAccount", auth, deleteAccount)
+router.put("/changePassord", auth, changePassord)
 
 module.exports = router

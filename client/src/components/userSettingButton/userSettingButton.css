@@ -3,7 +3,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     background: none;
     border: none;
@@ -20,6 +20,11 @@
 
 .user-settings__button:hover { 
     background-color: var(--profile-loss-color);
+}
+
+.user-settings__button P {
+    flex: 1 1 auto;
+    text-align: center;
 }
 
 .user-settings__button img {

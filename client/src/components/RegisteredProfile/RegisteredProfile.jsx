@@ -1,10 +1,12 @@
 import ProfileCard from "../ProfileCard/ProfileCard"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 import UserSettingButton from "../userSettingButton/userSettingButton"
+import MyModal from "../MyModal/MyModal"
 
 import getCookieByName from "../../utils/getCookieByName"
 import readFileAsBase64 from "../../utils/readFileAsBase64"
+import deleteCookieByName from "../../utils/deleteCookieByName"
 
 import "./RegisteredProfile.css"
 
@@ -22,6 +24,12 @@ import deleteAccountIcon from "./img/delete.png"
 const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
 
     const inputRef = useRef()
+    const [states, setStates] = useState({
+        isShowChangePasswordModal: false,
+        oldPasswordValue: "",
+        newPasswordValue: "",
+        changePasswordError: ""
+    })
 
     let currentAvatar
     let currentAvatarClass
@@ -71,6 +79,70 @@ const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
             .then(window.location.reload())
     }
 
+    async function handleChangePassword(e) {
+        e.preventDefault()
+
+        try {
+            if (states.oldPasswordValue.length <= 6) throw "invalid old password"
+            if (states.newPasswordValue.length <= 6) throw "invalid new password"
+
+            const token = getCookieByName("userId")
+            if (!token) throw "unautherizated!"
+            await fetch(PORT + "/changePassord", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    oldPassword: states.oldPasswordValue,
+                    newPassword: states.newPasswordValue
+                })
+
+            })
+                .then(data => data.text())
+                .then(res => {
+                    const parseResponse = JSON.parse(res)
+                    console.log(parseResponse)
+
+                    if (!parseResponse.isSuccessfully) {
+                        throw parseResponse.response
+                    }
+                })
+
+            setStates(prev => ({
+                ...prev, 
+                isShowChangePasswordModal: false,
+                oldPasswordValue: "",
+                newPasswordValue: "",
+                changePasswordError: ""
+            }))
+        } catch (err) {
+            setStates(prev => ({ ...prev, changePasswordError: err }))
+        }
+    }
+
+    async function handleDeleteAccount() {
+        try {
+            const token = getCookieByName("userId")
+
+            if (!token) {
+                throw "unautherizated!"
+            }
+
+            fetch(PORT + "/deleteAccount", {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            })
+                .then(data => data.text())
+                .then(res => console.log(res))
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div className="profile-container">
 
@@ -95,18 +167,24 @@ const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
                         <UserSettingButton
                             text="Change password"
                             icon={changePasswordIcon}
+                            onClick={() => setStates(prev => ({ ...prev, isShowChangePasswordModal: true }))}
                         />
 
                         <UserSettingButton
                             text="Logout"
                             icon={logoutIcon}
                             fontColor="red"
+                            onClick={() => deleteCookieByName("userId")}
                         />
 
                         <UserSettingButton
                             text="Delete account"
                             icon={deleteAccountIcon}
                             fontColor="red"
+                            onClick={async () => {
+                                await handleDeleteAccount()
+                                deleteCookieByName("userId")
+                            }}
                         />
                     </div>
                 </div>
@@ -177,6 +255,39 @@ const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
                     </div>
                 </div>
             </div>
+
+            {states.isShowChangePasswordModal && (
+                <MyModal isClose={true} setStates={[setStates, "isShowChangePasswordModal"]}>
+                    <form className="change-password-form">
+                        <div className="change-password-form__inputs">
+                            <input
+                                type="password"
+                                placeholder="Old password"
+                                className="change-password-form__input"
+                                value={states.oldPasswordValue}
+                                onChange={e => setStates(prev => ({ ...prev, oldPasswordValue: e.target.value }))}
+                            />
+                            <input
+                                type="text"
+                                placeholder="New password"
+                                className="change-password-form__input"
+                                value={states.newPasswordValue}
+                                onChange={e => setStates(prev => ({ ...prev, newPasswordValue: e.target.value }))}
+                            />
+                        </div>
+
+                        <p style={{ textAlign: "center", color: "red" }}>{states.changePasswordError}</p>
+
+                        <button
+                            type="submit"
+                            className="change-password-form__button"
+                            onClick={e => handleChangePassword(e)}
+                        >
+                            Change password
+                        </button>
+                    </form>
+                </MyModal>
+            )}
         </div>
     );
 }

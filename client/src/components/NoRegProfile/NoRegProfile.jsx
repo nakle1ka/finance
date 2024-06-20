@@ -108,6 +108,7 @@ const NoRegProfile = ({ PORT }) => {
                                 className="profile-form__password"
                                 value={inputStates.regPassword}
                                 onChange={(e) => setInputStates(prev => ({ ...prev, regPassword: e.target.value }))}
+                                autoComplete="on"
                             />
                             <input
                                 type="password"
@@ -115,6 +116,7 @@ const NoRegProfile = ({ PORT }) => {
                                 className="profile-form__second-password"
                                 value={inputStates.regSecPassword}
                                 onChange={(e) => setInputStates(prev => ({ ...prev, regSecPassword: e.target.value }))}
+                                autoComplete="on"
                             />
                         </div>
 
@@ -146,6 +148,7 @@ const NoRegProfile = ({ PORT }) => {
                                 className="profile-form__password"
                                 value={inputStates.logPassword}
                                 onChange={(e) => setInputStates(prev => ({ ...prev, logPassword: e.target.value }))}
+                                autoComplete="on"
                             />
                         </div>
 
