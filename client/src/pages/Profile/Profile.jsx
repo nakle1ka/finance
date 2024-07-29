@@ -3,7 +3,7 @@ import RegisteredProfile from "../../components/RegisteredProfile/RegisteredProf
 
 import getCookieByName from '../../utils/getCookieByName'
 
-const Profile = ({ avatar, username, statData, PORT }) => {
+const Profile = ({ avatar, username, statData }) => {
 
     let isShowProfile = false
 
@@ -12,8 +12,8 @@ const Profile = ({ avatar, username, statData, PORT }) => {
 
     return (
         <>
-            {isShowProfile && <RegisteredProfile avatar={avatar} username={username} statData={statData} PORT={PORT}/>}
-            {!isShowProfile && <NoRegProfile PORT={PORT}/>}
+            {isShowProfile && <RegisteredProfile avatar={avatar} username={username} statData={statData}/>}
+            {!isShowProfile && <NoRegProfile/>}
         </>
     );
 }

@@ -8,6 +8,8 @@ import getCookieByName from "../../utils/getCookieByName"
 import readFileAsBase64 from "../../utils/readFileAsBase64"
 import deleteCookieByName from "../../utils/deleteCookieByName"
 
+import { PORT } from "../../constants/constants"
+
 import "./RegisteredProfile.css"
 
 import noAvatarImg from "./img/questionmark_83826.svg"
@@ -21,7 +23,7 @@ import changePasswordIcon from "./img/Key.png"
 import logoutIcon from "./img/Logout.png"
 import deleteAccountIcon from "./img/delete.png"
 
-const RegisteredProfile = ({ avatar, username, statData, PORT }) => {
+const RegisteredProfile = ({ avatar, username, statData }) => {
 
     const inputRef = useRef()
     const [states, setStates] = useState({

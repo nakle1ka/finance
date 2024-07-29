@@ -9,13 +9,12 @@ import MyModal from "./components/MyModal/MyModal";
 
 import getCookieByName from "./utils/getCookieByName";
 
+import { PORT } from "./constants/constants";
+
 import "./styles/restart.css"
 import "./styles/style.css"
 
-
 function App() {
-	const PORT = "http://localhost:3500"
-
 	const [user, setUser] = useState({
 		username: "",
 		avatar: "",
@@ -94,13 +93,11 @@ function App() {
 						<Route path="/profile" element={<Profile
 							avatar={user.avatar}
 							username={user.username}
-							PORT={PORT}
 							statData={user.statData}
 						/>} />
 						<Route path="/home" element={
 							<Home
 								cardsSate={[cards, setCards, newElements, setNewElements]}
-								PORT={PORT}
 								isShowSaveBtn={[isShowSaveButton, setIsShowSaveButton]}
 							/>}
 						/>

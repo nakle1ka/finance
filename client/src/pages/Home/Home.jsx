@@ -7,7 +7,7 @@ import "./Home.css"
 
 //Я пытался использовать useContext, но у меня ничего не получилось((
 
-const Home = ({ cardsSate, PORT, isShowSaveBtn }) => {
+const Home = ({ cardsSate, isShowSaveBtn }) => {
 
     const [cards, setCards, newElements, setNewElements] = cardsSate
     const [searchQuery, setSearchQuery] = useState([])
@@ -31,7 +31,6 @@ const Home = ({ cardsSate, PORT, isShowSaveBtn }) => {
                     newElements,
                     setNewElements
                 }}
-                PORT={PORT}
                 isShowSaveBtn={isShowSaveBtn}
             />
 

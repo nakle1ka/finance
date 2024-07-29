@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./NoRegProfile.css"
 
-const NoRegProfile = ({ PORT }) => {
+import { PORT } from "../../constants/constants";
+
+const NoRegProfile = () => {
 
     const [isShowRegister, setIsShowRegister] = useState(true)
 

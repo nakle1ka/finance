@@ -9,7 +9,9 @@ import saveIcon from "../../imgs/icons/Done.png"
 
 import getCookieByName from "../../utils/getCookieByName"
 
-const ProfitLossBtns = ({ cardsState, PORT, isShowSaveBtn }) => {
+import { PORT } from "../../constants/constants"
+
+const ProfitLossBtns = ({ cardsState, isShowSaveBtn }) => {
 
     const [isShowSaveButton, setIsShowSaveButton] = isShowSaveBtn
 
